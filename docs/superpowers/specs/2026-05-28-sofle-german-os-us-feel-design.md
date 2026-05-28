@@ -13,7 +13,7 @@ Deliver a single ZMK firmware configuration for the Keebart Sofle Wireless that:
 
 - Supporting a US OS layout. The firmware assumes OS = German.
 - Supporting a Mac. (Possible later via a layer toggle, but out of scope here.)
-- Touching the Raise or Adjust layers — those are BT/RGB/navigation, layout-agnostic.
+- Touching the Adjust layer's **left half** — left-half BT/RGB controls stay as-is. (Raise gets nav tweaks; Adjust right half gets a numpad — see §5.4 and §5.5.)
 - Replacing existing Lower-layer behavior with a different layout strategy; only the *target keycodes* on Lower change.
 
 ## 3. Constraints / accepted trade-offs
@@ -115,9 +115,53 @@ ZMK macros that emit *dead-key + Space* to force the German OS to commit the sta
 
 Each macro is invoked from either the default layer (via the mod-morph for the `` ` ``/`~`/`^` keys) or directly from Lower.
 
-### 5.4 Raise & Adjust layers
+### 5.4 Raise layer — navigation tweaks
 
-No changes. Both layers are layout-agnostic (Bluetooth profile switching, RGB control, media keys, navigation).
+Right-half row 2/3 nav cluster gets adjusted so that Home/End sit directly above Left/Right, mirroring the semantic "line edges" alongside the existing arrow cluster:
+
+| Position | Before | After |
+|---|---|---|
+| Y | ▽ | `PG_UP` (moved from U) |
+| U | `PG_UP` | `HOME` |
+| I | `UP` | `UP` (unchanged) |
+| O | ▽ | `END` |
+
+Row 3 (PG_DN / LEFT / DOWN / RIGHT / DEL / BSPC) is unchanged. Result:
+
+```
+Row 2:  PG_UP  HOME   UP    END    0     ▽
+Row 3:  PG_DN  LEFT   DOWN  RIGHT  DEL   BSPC
+```
+
+`HOME` and `END` are German "Pos1" and "Ende" respectively; the HID keycodes are layout-agnostic so no compensation is needed.
+
+### 5.5 Adjust layer — numpad on the right half
+
+The Adjust layer is activated by holding both `Lower` and `Raise` (existing ZMK tri-layer / `conditional_layers` mechanism — no change to the activation). The **left half** of Adjust keeps its current Bluetooth/RGB controls. The **right half** becomes a full numpad anchored on K = `KP_N5`:
+
+```
+Row 1:  ▽     KP_SLASH  KP_ASTERISK  KP_MINUS   ▽          ▽
+Row 2:  ▽     KP_N7     KP_N8        KP_N9      KP_PLUS    ▽
+Row 3:  ▽     KP_N4     KP_N5        KP_N6      KP_EQUAL   ▽
+Row 4:  KP_N0 KP_N1     KP_N2        KP_N3      KP_ENTER   ▽
+```
+
+Column mapping (innermost to outermost on the right half):
+
+| Default position | Adjust binding |
+|---|---|
+| 6 / Y / H / N (column 1, innermost) | ▽ / ▽ / ▽ / `KP_N0` |
+| 7 / U / J / M (column 2) | `KP_SLASH` / `KP_N7` / `KP_N4` / `KP_N1` |
+| 8 / I / K / `,` (column 3) | `KP_ASTERISK` / `KP_N8` / `KP_N5` / `KP_N2` |
+| 9 / O / L / `.` (column 4) | `KP_MINUS` / `KP_N9` / `KP_N6` / `KP_N3` |
+| 0 / P / `;` / `/` (column 5) | ▽ / `KP_PLUS` / `KP_EQUAL` / `KP_ENTER` |
+| `` ` `` / BSPC / `'` / RSHFT (column 6, outermost) | ▽ / ▽ / ▽ / ▽ (untouched — preserves RSHFT) |
+
+`KP_N0` is placed at the N position (row 4 innermost letter column) because that's the most reachable empty slot — putting it on a thumb would require giving up a thumb key. If the user finds reaching N awkward during numeric entry, we can revisit.
+
+All `KP_*` keycodes are HID numpad codes (distinct from the top-row digits). On a German OS they behave as Num Lock numpad: digits enter as digits. Layout-agnostic; no compensation needed.
+
+**Open question (flagged for user):** the selected layout includes `KP_EQUAL` but no `KP_DOT` (decimal). For Excel-style numeric entry the decimal is usually more important than `=`. To be resolved before implementation — likely swap `KP_EQUAL` → `KP_DOT` at the `;` position, or add `KP_DOT` somewhere else.
 
 ## 6. Architecture / file layout
 
@@ -177,5 +221,7 @@ Detailed in a separate implementation plan (next step):
 5. Add dead-key macros (`` ` ``, `~`, `^`).
 6. Add umlaut mod-morphs (GUI+letter).
 7. Rewrite Lower-layer symbol emissions.
-8. Test sheet pass on Linux.
-9. Test sheet pass on Windows.
+8. Apply Raise-layer nav tweaks (PG_UP → Y, HOME on U, END on O).
+9. Add Adjust-layer numpad on the right half.
+10. Test sheet pass on Linux.
+11. Test sheet pass on Windows.

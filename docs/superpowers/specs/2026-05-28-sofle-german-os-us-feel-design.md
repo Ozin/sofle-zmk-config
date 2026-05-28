@@ -102,6 +102,7 @@ The current Lower layer emits US scancodes for direct symbol keys. Each of these
 | `:` | Shift+`;` | German Shift+`.` |
 | `\` | `\` | AltGr+ß |
 | `\|` | Shift+`\` | AltGr+NON_US_BSLASH (HID 0x64) |
+| `` ` `` | `` ` `` | dead-key macro (§5.3) |
 
 ### 5.3 Dead-key macros
 

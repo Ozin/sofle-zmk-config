@@ -142,7 +142,7 @@ The Adjust layer is activated by holding both `Lower` and `Raise` (existing ZMK 
 ```
 Row 1:  ▽     KP_SLASH  KP_ASTERISK  KP_MINUS   ▽          ▽
 Row 2:  ▽     KP_N7     KP_N8        KP_N9      KP_PLUS    ▽
-Row 3:  ▽     KP_N4     KP_N5        KP_N6      KP_EQUAL   ▽
+Row 3:  ▽     KP_N4     KP_N5        KP_N6      KP_DOT     ▽
 Row 4:  KP_N0 KP_N1     KP_N2        KP_N3      KP_ENTER   ▽
 ```
 
@@ -154,14 +154,14 @@ Column mapping (innermost to outermost on the right half):
 | 7 / U / J / M (column 2) | `KP_SLASH` / `KP_N7` / `KP_N4` / `KP_N1` |
 | 8 / I / K / `,` (column 3) | `KP_ASTERISK` / `KP_N8` / `KP_N5` / `KP_N2` |
 | 9 / O / L / `.` (column 4) | `KP_MINUS` / `KP_N9` / `KP_N6` / `KP_N3` |
-| 0 / P / `;` / `/` (column 5) | ▽ / `KP_PLUS` / `KP_EQUAL` / `KP_ENTER` |
+| 0 / P / `;` / `/` (column 5) | ▽ / `KP_PLUS` / `KP_DOT` / `KP_ENTER` |
 | `` ` `` / BSPC / `'` / RSHFT (column 6, outermost) | ▽ / ▽ / ▽ / ▽ (untouched — preserves RSHFT) |
 
 `KP_N0` is placed at the N position (row 4 innermost letter column) because that's the most reachable empty slot — putting it on a thumb would require giving up a thumb key. If the user finds reaching N awkward during numeric entry, we can revisit.
 
 All `KP_*` keycodes are HID numpad codes (distinct from the top-row digits). On a German OS they behave as Num Lock numpad: digits enter as digits. Layout-agnostic; no compensation needed.
 
-**Open question (flagged for user):** the selected layout includes `KP_EQUAL` but no `KP_DOT` (decimal). For Excel-style numeric entry the decimal is usually more important than `=`. To be resolved before implementation — likely swap `KP_EQUAL` → `KP_DOT` at the `;` position, or add `KP_DOT` somewhere else.
+`KP_DOT` sits at the `;` position (German "Punkt" / decimal). Behavior on a German OS: locale-aware — produces `,` in apps that respect numpad-decimal locale (e.g. German Excel) and `.` elsewhere. Layout-agnostic; no compensation needed.
 
 ## 6. Architecture / file layout
 

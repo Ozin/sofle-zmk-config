@@ -30,6 +30,10 @@ parse_config:
     "&grave_dk": "`"
     "&caret_dk": "^"
     "&tilde_dk": "~"
+    # ß / capital ß on the GUI layer.
+    "&ss_case": { t: "ß", s: "ẞ" }
+    # Numpad toggle.
+    "&tog NUMPAD": "Numpad\non/off"
 
   # DE_* symbol keycodes (after prefix strip) -> the character they produce.
   zmk_keycode_map:

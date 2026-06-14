@@ -13,21 +13,10 @@ layers:
     - {t: '9', s: (}
     - {t: '0', s: )}
     - {t: '`', s: '~'}
-  - - ESC
-    - Q
-    - W
-    - E
-    - R
-    - T
-    - 'Y'
-    - {t: u, h: ü}
-    - I
-    - {t: o, h: ö}
-    - P
-    - BSPC
+  - [ESC, Q, W, E, R, T, Y, U, I, O, P, BSPC]
   - - TAB
-    - {t: a, h: ä}
-    - {t: s, h: ß}
+    - A
+    - S
     - D
     - F
     - G
@@ -38,7 +27,7 @@ layers:
     - {t: ;, s: ':'}
     - {t: '''', s: '"'}
   - - LSHFT
-    - 'Z'
+    - Z
     - X
     - C
     - V
@@ -51,7 +40,7 @@ layers:
     - {t: ., s: '>'}
   - - {t: /, s: '?'}
     - RSHFT
-    - LGUI
+    - {t: LGUI, h: gui}
     - LALT
     - LCTRL
     - lower
@@ -60,7 +49,7 @@ layers:
     - raise
     - RCTRL
     - RALT
-    - RGUI
+    - {t: RGUI, h: gui}
   lower:
   - - {t: ▽, type: trans}
     - F1
@@ -79,27 +68,27 @@ layers:
     - '!'
     - '@'
     - '#'
-    - '$'
+    - $
     - '%'
     - ^
     - '&'
     - '*'
-    - '('
-    - ')'
+    - (
+    - )
     - '|'
   - - {t: ▽, type: trans}
     - '='
     - '-'
-    - '+'
+    - +
     - '{'
     - '}'
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - '['
     - ']'
-    - ';'
+    - ;
     - ':'
-  - - '\'
+  - - \
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
@@ -123,7 +112,9 @@ layers:
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
+    - 'Numpad
+
+      on/off'
   - - {t: ▽, type: trans}
     - INS
     - PSCRN
@@ -180,23 +171,147 @@ layers:
     - {t: BT, h: '3'}
     - {t: BT, h: '4'}
     - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+  - [EP TOG, RGB HUD, RGB HUI, RGB SAD, RGB SAI, RGB EFF, '', '', '', '', '', '']
+  - ['', RGB BRD, RGB BRI, '', '', '', '', '', '', '', '', '']
+  - ['', '', '', '', '', '', RGB TOG, '', '', '', '', '']
+  - - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - {type: held}
+    - ''
+    - ''
+    - {type: held}
+    - ''
+    - ''
+    - ''
+  gui:
+  - - {t: ▽, type: trans}
+    - Gui+1
+    - Gui+2
+    - Gui+3
+    - Gui+4
+    - Gui+5
+    - Gui+6
+    - Gui+7
+    - Gui+8
+    - Gui+9
+    - Gui+0
+    - {t: ▽, type: trans}
+  - - {t: ▽, type: trans}
+    - Gui+Q
+    - Gui+W
+    - Gui+E
+    - Gui+R
+    - Gui+T
+    - Gui+Y
+    - ü
+    - Gui+I
+    - ö
+    - Gui+P
+    - {t: ▽, type: trans}
+  - - Gui+TAB
+    - ä
+    - {t: ß, s: ẞ}
+    - Gui+D
+    - Gui+F
+    - Gui+G
+    - Gui+H
+    - Gui+J
+    - Gui+K
+    - Gui+L
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+  - - LSHFT
+    - Gui+Z
+    - Gui+X
+    - Gui+C
+    - Gui+V
+    - Gui+B
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - Gui+N
+    - Gui+M
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+  - - {t: ▽, type: trans}
+    - RSHFT
+    - {type: held}
+    - LALT
+    - LCTRL
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - RCTRL
+    - RALT
+    - {t: ▽, type: trans}
+  numpad:
+  - - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - ''
     - KP SLASH
     - KP ASTERISK
     - KP MINUS
     - ''
+    - 'Numpad
+
+      on/off'
+  - - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
     - ''
-  - [EP TOG, RGB HUD, RGB HUI, RGB SAD, RGB SAI, RGB EFF, '', KP 7, KP 8, KP 9, KP PLUS, '']
-  - ['', RGB BRD, RGB BRI, '', '', '', '', KP 4, KP 5, KP 6, KP DOT, '']
-  - ['', '', '', '', '', '', RGB TOG, '', KP 0, KP 1, KP 2, KP 3]
+    - KP 7
+    - KP 8
+    - KP 9
+    - KP PLUS
+    - ''
+  - - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - ''
+    - KP 4
+    - KP 5
+    - KP 6
+    - KP DOT
+    - ''
+  - - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - KP 0
+    - KP 1
+    - KP 2
+    - KP 3
   - - KP ENTER
     - ''
-    - ''
-    - ''
-    - ''
-    - {type: held}
-    - ''
-    - ''
-    - {type: held}
-    - ''
-    - ''
-    - ''
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}

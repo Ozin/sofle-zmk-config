@@ -1,0 +1,317 @@
+layout: {zmk_keyboard: sofle_choc_pro}
+layers:
+  default:
+  - - {t: '`', s: '~'}
+    - '1'
+    - {t: '2', s: '@'}
+    - {t: '3', s: '#'}
+    - '4'
+    - '5'
+    - {t: '6', s: ^}
+    - {t: '7', s: '&'}
+    - {t: '8', s: '*'}
+    - {t: '9', s: (}
+    - {t: '0', s: )}
+    - {t: '`', s: '~'}
+  - [ESC, Q, W, E, R, T, '(ZMK HID USAGE(HID USAGE KEY, HID USAGE KEY KEYBOARD Z))', U, I, O, P, BSPC]
+  - - TAB
+    - A
+    - S
+    - D
+    - F
+    - G
+    - H
+    - J
+    - K
+    - L
+    - {t: ;, s: ':'}
+    - {t: '''', s: '"'}
+  - - LSHFT
+    - (ZMK HID USAGE(HID USAGE KEY, HID USAGE KEY KEYBOARD Y))
+    - X
+    - C
+    - V
+    - B
+    - MUTE
+    - PLAY
+    - N
+    - M
+    - {t: ',', s: <}
+    - {t: ., s: '>'}
+  - - {t: /, s: '?'}
+    - RSHFT
+    - {t: LGUI, h: gui}
+    - LALT
+    - LCTRL
+    - lower
+    - RET
+    - SPACE
+    - raise
+    - RCTRL
+    - RALT
+    - {t: RGUI, h: gui}
+  lower:
+  - - {t: ▽, type: trans}
+    - F1
+    - F2
+    - F3
+    - F4
+    - F5
+    - F6
+    - F7
+    - F8
+    - F9
+    - F10
+    - F11
+  - ['`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', F12]
+  - - {t: ▽, type: trans}
+    - ((LS(ZMK HID USAGE(HID USAGE KEY, HID USAGE KEY KEYBOARD 1 AND EXCLAMATION))))
+    - ((RA(ZMK HID USAGE(HID USAGE KEY, HID USAGE KEY KEYBOARD Q))))
+    - (ZMK HID USAGE(HID USAGE KEY, HID USAGE KEY KEYBOARD BACKSLASH AND PIPE))
+    - ((LS(ZMK HID USAGE(HID USAGE KEY, HID USAGE KEY KEYBOARD 4 AND DOLLAR))))
+    - ((LS(ZMK HID USAGE(HID USAGE KEY, HID USAGE KEY KEYBOARD 5 AND PERCENT))))
+    - ^
+    - ((LS(ZMK HID USAGE(HID USAGE KEY, HID USAGE KEY KEYBOARD 6 AND CARET))))
+    - ((LS(ZMK HID USAGE(HID USAGE KEY, HID USAGE KEY KEYBOARD RIGHT BRACKET AND RIGHT BRACE))))
+    - ((LS(ZMK HID USAGE(HID USAGE KEY, HID USAGE KEY KEYBOARD 8 AND ASTERISK))))
+    - ((LS(ZMK HID USAGE(HID USAGE KEY, HID USAGE KEY KEYBOARD 9 AND LEFT PARENTHESIS))))
+    - (RA(ZMK HID USAGE(HID USAGE KEY, HID USAGE KEY KEYBOARD NON US BACKSLASH AND PIPE)))
+  - - {t: ▽, type: trans}
+    - (LS(ZMK HID USAGE(HID USAGE KEY, HID USAGE KEY KEYBOARD 0 AND RIGHT PARENTHESIS)))
+    - (ZMK HID USAGE(HID USAGE KEY, HID USAGE KEY KEYBOARD SLASH AND QUESTION MARK))
+    - (ZMK HID USAGE(HID USAGE KEY, HID USAGE KEY KEYBOARD RIGHT BRACKET AND RIGHT BRACE))
+    - ((RA(ZMK HID USAGE(HID USAGE KEY, HID USAGE KEY KEYBOARD 7 AND AMPERSAND))))
+    - ((RA(ZMK HID USAGE(HID USAGE KEY, HID USAGE KEY KEYBOARD 0 AND RIGHT PARENTHESIS))))
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - ((RA(ZMK HID USAGE(HID USAGE KEY, HID USAGE KEY KEYBOARD 8 AND ASTERISK))))
+    - ((RA(ZMK HID USAGE(HID USAGE KEY, HID USAGE KEY KEYBOARD 9 AND LEFT PARENTHESIS))))
+    - ((LS(ZMK HID USAGE(HID USAGE KEY, HID USAGE KEY KEYBOARD COMMA AND LESS THAN))))
+    - (LS(ZMK HID USAGE(HID USAGE KEY, HID USAGE KEY KEYBOARD PERIOD AND GREATER THAN)))
+  - - ((RA(ZMK HID USAGE(HID USAGE KEY, HID USAGE KEY KEYBOARD MINUS AND UNDERSCORE))))
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {type: held}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+  raise:
+  - - BT CLR
+    - {t: BT, h: '0'}
+    - {t: BT, h: '1'}
+    - {t: BT, h: '2'}
+    - {t: BT, h: '3'}
+    - {t: BT, h: '4'}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - 'Numpad
+
+      on/off'
+  - - {t: ▽, type: trans}
+    - INS
+    - PSCRN
+    - CMENU
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - PG UP
+    - HOME
+    - UP
+    - END
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+  - - {t: ▽, type: trans}
+    - LALT
+    - LCTRL
+    - LSHFT
+    - {t: ▽, type: trans}
+    - CLCK
+    - PG DN
+    - LEFT
+    - DOWN
+    - RIGHT
+    - DEL
+    - BSPC
+  - - {t: ▽, type: trans}
+    - UNDO
+    - CUT
+    - COPY
+    - PASTE
+    - '&studio_unlock'
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+  - - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {type: held}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+  adjust:
+  - - BT CLR
+    - {t: BT, h: '0'}
+    - {t: BT, h: '1'}
+    - {t: BT, h: '2'}
+    - {t: BT, h: '3'}
+    - {t: BT, h: '4'}
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+  - [EP TOG, RGB HUD, RGB HUI, RGB SAD, RGB SAI, RGB EFF, '', '', '', '', '', '']
+  - ['', RGB BRD, RGB BRI, '', '', '', '', '', '', '', '', '']
+  - ['', '', '', '', '', '', RGB TOG, '', '', '', '', '']
+  - - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - {type: held}
+    - ''
+    - ''
+    - {type: held}
+    - ''
+    - ''
+    - ''
+  gui:
+  - - {t: ▽, type: trans}
+    - Gui+1
+    - Gui+2
+    - Gui+3
+    - Gui+4
+    - Gui+5
+    - Gui+6
+    - Gui+7
+    - Gui+8
+    - Gui+9
+    - Gui+0
+    - {t: ▽, type: trans}
+  - - {t: ▽, type: trans}
+    - Gui+Q
+    - Gui+W
+    - Gui+E
+    - Gui+R
+    - Gui+T
+    - Gui+Y
+    - (ZMK HID USAGE(HID USAGE KEY, HID USAGE KEY KEYBOARD LEFT BRACKET AND LEFT BRACE))
+    - Gui+I
+    - (ZMK HID USAGE(HID USAGE KEY, HID USAGE KEY KEYBOARD SEMICOLON AND COLON))
+    - Gui+P
+    - {t: ▽, type: trans}
+  - - Gui+TAB
+    - (ZMK HID USAGE(HID USAGE KEY, HID USAGE KEY KEYBOARD APOSTROPHE AND QUOTE))
+    - {t: ß, s: ẞ}
+    - Gui+D
+    - Gui+F
+    - Gui+G
+    - Gui+H
+    - Gui+J
+    - Gui+K
+    - Gui+L
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+  - - LSHFT
+    - Gui+Z
+    - Gui+X
+    - Gui+C
+    - Gui+V
+    - Gui+B
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - Gui+N
+    - Gui+M
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+  - - {t: ▽, type: trans}
+    - RSHFT
+    - {type: held}
+    - LALT
+    - LCTRL
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - RCTRL
+    - RALT
+    - {t: ▽, type: trans}
+  numpad:
+  - - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - ''
+    - KP SLASH
+    - KP ASTERISK
+    - KP MINUS
+    - ''
+    - 'Numpad
+
+      on/off'
+  - - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - ''
+    - KP 7
+    - KP 8
+    - KP 9
+    - KP PLUS
+    - ''
+  - - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - ''
+    - KP 4
+    - KP 5
+    - KP 6
+    - KP DOT
+    - ''
+  - - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - KP 0
+    - KP 1
+    - KP 2
+    - KP 3
+  - - KP ENTER
+    - ''
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}

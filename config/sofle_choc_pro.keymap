@@ -12,8 +12,18 @@
  * on your keycaps (y/z in the right spots, @ # { } [ ] etc.). The DE_*
  * keycodes come from the vendored keys_de.h header.
  *
- * Extras: hold GUI + a/o/u/s -> ä/ö/ü/ß ; Raise has Home/End ; Adjust (hold
- * Lower+Raise) has a numpad on the right half.
+ * Umlauts: HOLD a GUI (Win) thumb key, then a/o/u/s -> ä/ö/ü/ß (Shift -> capitals).
+ *   While the GUI key is held the board is on the GUI layer, where every other
+ *   key is its real Win+key shortcut (Win+L, Win+E, Win+D, Win+1..0, ...).
+ *   A quick TAP of a GUI key alone = Start menu. Because the umlauts live on a
+ *   layer, Windows never sees a lone Win press, so the Start menu no longer pops
+ *   up while typing umlauts. (Trade-off: Win+A / Win+S / Win+Shift+S are gone.)
+ *
+ * Numpad: toggle layer. Raise + top-right key turns it ON (stays on); the same
+ *   top-right key turns it OFF. While on, the right hand is a numpad; the left
+ *   hand still types letters.
+ *
+ * Raise: Home/End next to the arrows. Adjust (hold Lower+Raise): BT/RGB.
  */
 
 #include <behaviors.dtsi>
@@ -27,6 +37,8 @@
 #define LOWER 1
 #define RAISE 2
 #define ADJUST 3
+#define GUI 4
+#define NUMPAD 5
 
 / {
 
@@ -53,38 +65,23 @@
   };
 
   behaviors {
-    // --- Umlaut chord: hold LGUI/RGUI + letter -> umlaut. GUI is consumed
-    //     (not sent to the OS); Shift passes through, so GUI+Shift -> capital. ---
-    umlaut_a: umlaut_a {
-      compatible = "zmk,behavior-mod-morph";
-      #binding-cells = <0>;
-      bindings = <&kp A>, <&kp DE_A_UMLAUT>;
-      mods = <(MOD_LGUI|MOD_RGUI)>;
+    // GUI thumb: tap alone = Win (Start menu); hold = GUI layer (umlauts +
+    // real Win+key shortcuts). hold-preferred: pressing any key while held
+    // immediately switches to the GUI layer.
+    gui_lt: gui_lt {
+      compatible = "zmk,behavior-hold-tap";
+      #binding-cells = <2>;
+      bindings = <&mo>, <&kp>;
+      flavor = "hold-preferred";
+      tapping-term-ms = <200>;
     };
-    umlaut_o: umlaut_o {
-      compatible = "zmk,behavior-mod-morph";
-      #binding-cells = <0>;
-      bindings = <&kp O>, <&kp DE_O_UMLAUT>;
-      mods = <(MOD_LGUI|MOD_RGUI)>;
-    };
-    umlaut_u: umlaut_u {
-      compatible = "zmk,behavior-mod-morph";
-      #binding-cells = <0>;
-      bindings = <&kp U>, <&kp DE_U_UMLAUT>;
-      mods = <(MOD_LGUI|MOD_RGUI)>;
-    };
-    // ß: GUI+s -> ß ; GUI+Shift+s -> ẞ (capital eszett) via nested Shift-morph
+
+    // ß on the GUI layer: s -> ß ; Shift+s -> ẞ (capital eszett).
     ss_case: ss_case {
       compatible = "zmk,behavior-mod-morph";
       #binding-cells = <0>;
       bindings = <&kp DE_SZ>, <&kp DE_CAPITAL_SZ>;
       mods = <(MOD_LSFT|MOD_RSFT)>;
-    };
-    umlaut_s: umlaut_s {
-      compatible = "zmk,behavior-mod-morph";
-      #binding-cells = <0>;
-      bindings = <&kp S>, <&ss_case>;
-      mods = <(MOD_LGUI|MOD_RGUI)>;
     };
 
     // --- Number row: digit unshifted, US symbol shifted ---
@@ -191,13 +188,13 @@
       // |  TAB  |  A  |  S  |  D   |  F   |  G   |                   |  H   |  J    |  K    |  L   |   ;   |   '   |
       // | SHIFT |  Z  |  X  |  C   |  V   |  B   |  MUTE  |  | PLAY  |  N   |  M    |  ,    |  .   |   /   | SHIFT |
       //               | GUI | ALT  | CTRL | LOWER|  ENTER |  | SPACE | RAISE| CTRL  | ALT   | GUI  |
-      // A/O/U/S also emit ä/ö/ü/ß when GUI is held.
+      // Thumb GUI keys: tap = Start menu, hold = umlauts / Win shortcuts.
       bindings = <
-        &grave_morph &kp N1    &n2_morph &n3_morph &kp N4    &kp N5                              &n6_morph &n7_morph &n8_morph    &n9_morph  &n0_morph    &grave_morph
-        &kp ESC      &kp Q     &kp W     &kp E     &kp R     &kp T                               &kp DE_Y  &umlaut_u &kp I        &umlaut_o  &kp P        &kp BSPC
-        &kp TAB      &umlaut_a &umlaut_s &kp D     &kp F     &kp G                               &kp H     &kp J     &kp K        &kp L      &semi_morph  &quote_morph
-        &kp LSHFT    &kp DE_Z  &kp X     &kp C     &kp V     &kp B    &kp C_MUTE   &kp C_PLAY     &kp N     &kp M     &comma_morph &dot_morph &slash_morph &kp RSHFT
-        &kp LGUI &kp LALT &kp LCTRL &mo LOWER  &kp RET    &kp SPACE  &mo RAISE  &kp RCTRL &kp RALT  &kp RGUI
+        &grave_morph    &kp N1   &n2_morph &n3_morph &kp N4    &kp N5                            &n6_morph &n7_morph &n8_morph    &n9_morph  &n0_morph    &grave_morph
+        &kp ESC         &kp Q    &kp W     &kp E     &kp R     &kp T                             &kp DE_Y  &kp U     &kp I        &kp O      &kp P        &kp BSPC
+        &kp TAB         &kp A    &kp S     &kp D     &kp F     &kp G                             &kp H     &kp J     &kp K        &kp L      &semi_morph  &quote_morph
+        &kp LSHFT       &kp DE_Z &kp X     &kp C     &kp V     &kp B    &kp C_MUTE  &kp C_PLAY    &kp N     &kp M     &comma_morph &dot_morph &slash_morph &kp RSHFT
+        &gui_lt GUI LGUI &kp LALT &kp LCTRL &mo LOWER &kp RET    &kp SPACE  &mo RAISE  &kp RCTRL &kp RALT  &gui_lt GUI RGUI
       >;
 
       sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp C_PREV C_NEXT>;
@@ -225,13 +222,13 @@
     raise_layer {
       display-name = "raise";
       // ------------------------------------------------------------------------------------------------------------
-      // | BTCLR | BT1  | BT2  |  BT3  |  BT4  |  BT5 |                | PGUP | HOME |  UP   | END  |       |       |
+      // | BTCLR | BT1  | BT2  |  BT3  |  BT4  |  BT5 |                | PGUP | HOME |  UP   | END  |       | NUMPAD|
       // |       | INS  | PSCR | GUI   |       |      |                | PGDN |  <-  |  v    |  ->  |  DEL  | BKSPC |
       // |       | ALT  | CTRL | SHIFT |       | CAPS |                |      |      |       |      |       |       |
       // |       | UNDO | CUT  | COPY  | PASTE | STUD |      |  |      |      |      |       |      |       |       |
       //                |      |       |       |      |      |  |      |      |      |       |      |
       bindings = <
-        &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4                      &trans    &trans    &trans    &trans     &trans   &trans
+        &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4                      &trans    &trans    &trans    &trans     &trans   &tog NUMPAD
         &trans     &kp INS      &kp PSCRN    &kp K_CMENU  &trans       &trans                            &kp PG_UP &kp HOME  &kp UP    &kp END    &trans   &trans
         &trans     &kp LALT     &kp LCTRL    &kp LSHFT    &trans       &kp CLCK                          &kp PG_DN &kp LEFT  &kp DOWN  &kp RIGHT  &kp DEL  &kp BSPC
         &trans     &kp K_UNDO   &kp K_CUT    &kp K_COPY   &kp K_PASTE  &studio_unlock  &trans  &trans    &trans    &trans    &trans    &trans     &trans   &trans
@@ -243,18 +240,44 @@
 
     adjust_layer {
       // ----------------------------------------------------------------------------------------------------------------------------
-      // | BTCLR  |  BT1    |  BT2    |   BT3   |   BT4   |   BT5   |                  |      |   /   |   *   |   -   |       |       |
-      // | EXTPWR | RGB_HUD | RGB_HUI | RGB_SAD | RGB_SAI | RGB_EFF |                  |      |   7   |   8   |   9   |   +   |       |
-      // |        | RGB_BRD | RGB_BRI |         |         |         |                  |      |   4   |   5   |   6   |   .   |       |
-      // |        |         |         |         |         |         | RGB_TOG | |      |   0  |   1   |   2   |   3   | ENTER |       |
+      // | BTCLR  |  BT1    |  BT2    |   BT3   |   BT4   |   BT5   |                  |      |      |       |      |       |       |
+      // | EXTPWR | RGB_HUD | RGB_HUI | RGB_SAD | RGB_SAI | RGB_EFF |                  |      |      |       |      |       |       |
+      // |        | RGB_BRD | RGB_BRI |         |         |         |                  |      |      |       |      |       |       |
+      // |        |         |         |         |         |         | RGB_TOG | |      |      |      |       |      |       |       |
       //                    |         |         |         |         |         | |      |      |      |       |      |
       display-name = "adjust";
       bindings = <
-        &bt BT_CLR        &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &bt BT_SEL 4                            &none     &kp KP_SLASH &kp KP_ASTERISK &kp KP_MINUS &none        &none
-        &ext_power EP_TOG &rgb_ug RGB_HUD &rgb_ug RGB_HUI &rgb_ug RGB_SAD &rgb_ug RGB_SAI &rgb_ug RGB_EFF                         &none     &kp KP_N7    &kp KP_N8       &kp KP_N9    &kp KP_PLUS  &none
-        &none             &rgb_ug RGB_BRD &rgb_ug RGB_BRI &none           &none           &none                                   &none     &kp KP_N4    &kp KP_N5       &kp KP_N6    &kp KP_DOT   &none
-        &none             &none           &none           &none           &none           &none            &rgb_ug RGB_TOG &none  &kp KP_N0 &kp KP_N1    &kp KP_N2       &kp KP_N3    &kp KP_ENTER &none
+        &bt BT_CLR        &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &bt BT_SEL 4                            &none &none &none &none &none &none
+        &ext_power EP_TOG &rgb_ug RGB_HUD &rgb_ug RGB_HUI &rgb_ug RGB_SAD &rgb_ug RGB_SAI &rgb_ug RGB_EFF                         &none &none &none &none &none &none
+        &none             &rgb_ug RGB_BRD &rgb_ug RGB_BRI &none           &none           &none                                   &none &none &none &none &none &none
+        &none             &none           &none           &none           &none           &none            &rgb_ug RGB_TOG &none  &none &none &none &none &none &none
         &none           &none           &none           &none            &none           &none  &none &none &none &none
+      >;
+    };
+
+    gui_layer {
+      display-name = "gui";
+      // Active while a GUI thumb is held. a/o/u/s -> umlauts; everything else is
+      // the real Win+key shortcut. Win+A / Win+S / Win+Shift+S are sacrificed.
+      bindings = <
+        &trans      &kp LG(N1)      &kp LG(N2) &kp LG(N3) &kp LG(N4) &kp LG(N5)                      &kp LG(N6) &kp LG(N7)       &kp LG(N8) &kp LG(N9)       &kp LG(N0) &trans
+        &trans      &kp LG(Q)       &kp LG(W)  &kp LG(E)  &kp LG(R)  &kp LG(T)                       &kp LG(Y)  &kp DE_U_UMLAUT  &kp LG(I)  &kp DE_O_UMLAUT  &kp LG(P)  &trans
+        &kp LG(TAB) &kp DE_A_UMLAUT &ss_case   &kp LG(D)  &kp LG(F)  &kp LG(G)                       &kp LG(H)  &kp LG(J)        &kp LG(K)  &kp LG(L)        &trans     &trans
+        &kp LSHFT   &kp LG(Z)       &kp LG(X)  &kp LG(C)  &kp LG(V)  &kp LG(B)  &trans     &trans     &kp LG(N)  &kp LG(M)        &trans     &trans           &trans     &kp RSHFT
+        &trans &kp LALT &kp LCTRL &trans &trans  &trans &trans &kp RCTRL &kp RALT &trans
+      >;
+    };
+
+    numpad_layer {
+      display-name = "numpad";
+      // Toggle layer (Raise + top-right turns on; top-right here turns off).
+      // Right hand = numpad; left hand still types letters.
+      bindings = <
+        &trans &trans &trans &trans &trans &trans                  &none     &kp KP_SLASH &kp KP_ASTERISK &kp KP_MINUS &none        &tog NUMPAD
+        &trans &trans &trans &trans &trans &trans                  &none     &kp KP_N7    &kp KP_N8       &kp KP_N9    &kp KP_PLUS  &none
+        &trans &trans &trans &trans &trans &trans                  &none     &kp KP_N4    &kp KP_N5       &kp KP_N6    &kp KP_DOT   &none
+        &trans &trans &trans &trans &trans &trans &trans &trans    &kp KP_N0 &kp KP_N1    &kp KP_N2       &kp KP_N3    &kp KP_ENTER &none
+        &trans &trans &trans &trans &trans  &trans &trans &trans &trans &trans
       >;
     };
   };

@@ -43,24 +43,25 @@
 / {
 
   macros {
-    // Tap the German dead-grave (Shift+=) then Space to commit a standalone `
+    // German dead-grave (Shift+=) then Space to commit a standalone `.
+    // The delays let the OS register the dead-key state before Space, which
+    // fixes terminals (otherwise only a space appears) and the GUI "flicker".
     grave_dk: grave_dk {
       compatible = "zmk,behavior-macro";
       #binding-cells = <0>;
-      bindings = <&macro_tap &kp DE_GRAVE &kp SPACE>;
+      bindings = <&macro_tap_time 30 &macro_wait_time 30 &macro_tap &kp DE_GRAVE &kp SPACE>;
     };
-    // Tap AltGr+'+' (German tilde) then Space. If your OS types ~ directly
-    // (no dead key), remove the "&kp SPACE" below.
+    // German tilde (AltGr++) is NOT a dead key — it types ~ directly, so no Space.
     tilde_dk: tilde_dk {
       compatible = "zmk,behavior-macro";
       #binding-cells = <0>;
-      bindings = <&macro_tap &kp DE_TILDE &kp SPACE>;
+      bindings = <&macro_tap &kp DE_TILDE>;
     };
-    // Tap the German dead-circumflex (^ key) then Space to commit a standalone ^
+    // German dead-circumflex (^ key) then Space to commit a standalone ^.
     caret_dk: caret_dk {
       compatible = "zmk,behavior-macro";
       #binding-cells = <0>;
-      bindings = <&macro_tap &kp DE_CARET &kp SPACE>;
+      bindings = <&macro_tap_time 30 &macro_wait_time 30 &macro_tap &kp DE_CARET &kp SPACE>;
     };
   };
 

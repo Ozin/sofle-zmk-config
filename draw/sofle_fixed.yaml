@@ -1,0 +1,202 @@
+layout: {zmk_keyboard: sofle_choc_pro}
+layers:
+  default:
+  - - {t: '`', s: '~'}
+    - '1'
+    - {t: '2', s: '@'}
+    - {t: '3', s: '#'}
+    - '4'
+    - '5'
+    - {t: '6', s: ^}
+    - {t: '7', s: '&'}
+    - {t: '8', s: '*'}
+    - {t: '9', s: (}
+    - {t: '0', s: )}
+    - {t: '`', s: '~'}
+  - - ESC
+    - Q
+    - W
+    - E
+    - R
+    - T
+    - 'Y'
+    - {t: u, h: ü}
+    - I
+    - {t: o, h: ö}
+    - P
+    - BSPC
+  - - TAB
+    - {t: a, h: ä}
+    - {t: s, h: ß}
+    - D
+    - F
+    - G
+    - H
+    - J
+    - K
+    - L
+    - {t: ;, s: ':'}
+    - {t: '''', s: '"'}
+  - - LSHFT
+    - 'Z'
+    - X
+    - C
+    - V
+    - B
+    - MUTE
+    - PLAY
+    - N
+    - M
+    - {t: ',', s: <}
+    - {t: ., s: '>'}
+  - - {t: /, s: '?'}
+    - RSHFT
+    - LGUI
+    - LALT
+    - LCTRL
+    - lower
+    - RET
+    - SPACE
+    - raise
+    - RCTRL
+    - RALT
+    - RGUI
+  lower:
+  - - {t: ▽, type: trans}
+    - F1
+    - F2
+    - F3
+    - F4
+    - F5
+    - F6
+    - F7
+    - F8
+    - F9
+    - F10
+    - F11
+  - ['`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', F12]
+  - - {t: ▽, type: trans}
+    - '!'
+    - '@'
+    - '#'
+    - '$'
+    - '%'
+    - ^
+    - '&'
+    - '*'
+    - '('
+    - ')'
+    - '|'
+  - - {t: ▽, type: trans}
+    - '='
+    - '-'
+    - '+'
+    - '{'
+    - '}'
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - '['
+    - ']'
+    - ';'
+    - ':'
+  - - '\'
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {type: held}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+  raise:
+  - - BT CLR
+    - {t: BT, h: '0'}
+    - {t: BT, h: '1'}
+    - {t: BT, h: '2'}
+    - {t: BT, h: '3'}
+    - {t: BT, h: '4'}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+  - - {t: ▽, type: trans}
+    - INS
+    - PSCRN
+    - CMENU
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - PG UP
+    - HOME
+    - UP
+    - END
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+  - - {t: ▽, type: trans}
+    - LALT
+    - LCTRL
+    - LSHFT
+    - {t: ▽, type: trans}
+    - CLCK
+    - PG DN
+    - LEFT
+    - DOWN
+    - RIGHT
+    - DEL
+    - BSPC
+  - - {t: ▽, type: trans}
+    - UNDO
+    - CUT
+    - COPY
+    - PASTE
+    - '&studio_unlock'
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+  - - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {type: held}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+  adjust:
+  - - BT CLR
+    - {t: BT, h: '0'}
+    - {t: BT, h: '1'}
+    - {t: BT, h: '2'}
+    - {t: BT, h: '3'}
+    - {t: BT, h: '4'}
+    - ''
+    - KP SLASH
+    - KP ASTERISK
+    - KP MINUS
+    - ''
+    - ''
+  - [EP TOG, RGB HUD, RGB HUI, RGB SAD, RGB SAI, RGB EFF, '', KP 7, KP 8, KP 9, KP PLUS, '']
+  - ['', RGB BRD, RGB BRI, '', '', '', '', KP 4, KP 5, KP 6, KP DOT, '']
+  - ['', '', '', '', '', '', RGB TOG, '', KP 0, KP 1, KP 2, KP 3]
+  - - KP ENTER
+    - ''
+    - ''
+    - ''
+    - ''
+    - {type: held}
+    - ''
+    - ''
+    - {type: held}
+    - ''
+    - ''
+    - ''

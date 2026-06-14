@@ -1,0 +1,55 @@
+# keymap-drawer config for the German-OS / US-feel Sofle keymap.
+# Maps custom behaviors and DE_* locale keycodes to readable legends so the
+# rendered diagram shows the *characters you get*, not internal names.
+parse_config:
+  # Strip the DE_ prefix so locale keycodes fall back to readable names.
+  zmk_remove_keycode_prefix: ["DE_"]
+
+  # Custom behaviors (mod-morphs + macros) -> legends.
+  # t = tap/base (center), s = shifted (corner), h = hold/secondary.
+  raw_binding_map:
+    "&n2_morph": { t: "2", s: "@" }
+    "&n3_morph": { t: "3", s: "#" }
+    "&n6_morph": { t: "6", s: "^" }
+    "&n7_morph": { t: "7", s: "&" }
+    "&n8_morph": { t: "8", s: "*" }
+    "&n9_morph": { t: "9", s: "(" }
+    "&n0_morph": { t: "0", s: ")" }
+    "&grave_morph": { t: "`", s: "~" }
+    "&semi_morph": { t: ";", s: ":" }
+    "&quote_morph": { t: "'", s: "\"" }
+    "&comma_morph": { t: ",", s: "<" }
+    "&dot_morph": { t: ".", s: ">" }
+    "&slash_morph": { t: "/", s: "?" }
+    # Umlaut chord: base letter on tap, GUI-umlaut shown as hold legend.
+    "&umlaut_a": { t: "a", h: "ä" }
+    "&umlaut_o": { t: "o", h: "ö" }
+    "&umlaut_u": { t: "u", h: "ü" }
+    "&umlaut_s": { t: "s", h: "ß" }
+    # Dead-key macros.
+    "&grave_dk": "`"
+    "&caret_dk": "^"
+    "&tilde_dk": "~"
+
+  # DE_* symbol keycodes (after prefix strip) -> the character they produce.
+  zmk_keycode_map:
+    AT: "@"
+    HASH: "#"
+    DLLR: "$"
+    PRCNT: "%"
+    EXCL: "!"
+    AMPS: "&"
+    ASTRK: "*"
+    LPAR: "("
+    RPAR: ")"
+    LBRC: "{"
+    RBRC: "}"
+    LBKT: "["
+    RBKT: "]"
+    SEMI: ";"
+    COLON: ":"
+    BSLH: "\\"
+    PIPE: "|"
+    EQUAL: "="
+    MINUS: "-"
+    PLUS: "+"

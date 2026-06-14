@@ -9,9 +9,10 @@ Custom [ZMK](https://zmk.dev) firmware for the [Keebart Sofle Wireless](https://
 ## Features
 
 - **US-feel typing on a German OS** — letters, number-row symbols, and punctuation come out as on a US layout.
-- **Umlaut chord** — hold `GUI` (Super/Win) + `a` / `o` / `u` / `s` → `ä` / `ö` / `ü` / `ß` (add Shift for `Ä Ö Ü ẞ`). Other `GUI`+letter shortcuts (e.g. `Win+L`, `Win+E`) still work.
+- **Umlaut chord** — **hold** a `GUI` (Win) thumb key + `a` / `o` / `u` / `s` → `ä` / `ö` / `ü` / `ß` (add Shift for `Ä Ö Ü ẞ`). While the GUI key is held the board is on a GUI layer where every other key is its real Win shortcut (`Win+L`, `Win+E`, `Win+D`, `Win+1`…`0`, …). A quick **tap** of a GUI key alone = Start menu — so umlauts no longer pop the Start menu. (Trade-off: `Win+A`, `Win+S`, `Win+Shift+S` are unavailable.)
 - **Raise layer** — `Home`/`End` next to the arrow cluster.
-- **Adjust layer** — full numpad on the right half (hold `Lower`+`Raise`).
+- **Numpad** — toggle layer: **Raise + top-right key** turns it on (it stays on); the same **top-right key** turns it off. While on, the right hand is a numpad and the left hand still types letters.
+- **Adjust layer** — Bluetooth + RGB controls (hold `Lower`+`Raise`).
 - **Dead-key helpers** — standalone `` ` `` `~` `^` via macros.
 
 ## Layout

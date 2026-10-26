@@ -38,12 +38,12 @@ Custom [ZMK](https://zmk.dev) firmware for the [Keebart Sofle Wireless](https://
 You don't need to install anything — GitHub builds the firmware for you.
 
 1. **Build:** push to GitHub. The Actions workflow (`.github/workflows/build.yml`) compiles the firmware and, when it finishes (green ✓), attaches a **`firmware`** artifact under the run's *Artifacts* section. Download and unzip it to get:
-   - `sofle_choc_pro_left-…uf2`
-   - `sofle_choc_pro_right-…uf2`
+   - `sofle_choc_pro_bt_left.uf2`
+   - `sofle_choc_pro_bt_right.uf2`
 2. **Flash each half:**
    - Set your OS keyboard layout to **German**.
-   - Connect the **left** half by USB, **double-tap its reset button** → a USB drive appears → drag the `…left…uf2` file onto it. It reboots automatically.
-   - Repeat for the **right** half with the `…right…uf2` file.
+   - Connect the **left** half by USB, **double-tap its reset button** → a USB drive appears → drag `sofle_choc_pro_bt_left.uf2` onto it. It reboots automatically.
+   - Repeat for the **right** half with `sofle_choc_pro_bt_right.uf2`.
 3. **Reconnect** Bluetooth and type away.
 
 > If something ever goes wrong with pairing, the build also produces `settings_reset` firmware — flash that to both halves, then flash the normal firmware again.

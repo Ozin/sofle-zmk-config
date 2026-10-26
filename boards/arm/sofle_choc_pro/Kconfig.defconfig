@@ -3,9 +3,6 @@
 
 if BOARD_SOFLE_CHOC_PRO_LEFT
 
-config ZMK_KEYBOARD_NAME
-	default "Sofle Choc Pro"
-
 config ZMK_SPLIT_ROLE_CENTRAL
     default y
 

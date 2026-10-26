@@ -107,7 +107,7 @@ ZMK_DISPLAY_WIDGET_LISTENER(widget_peripheral_status, struct peripheral_status_s
                             output_status_update_cb, get_state)
 ZMK_SUBSCRIPTION(widget_peripheral_status, zmk_split_peripheral_status_changed);
 
-#ifdef CONFIG_NICE_VIEW_DISP_ROTATE_180 // sets positions for default and flipped canvases
+#ifdef CONFIG_SHARP_MIP_ROTATE_180 // sets positions for default and flipped canvases
 int art_pos = 20;
 int top_pos = 0;
 #else

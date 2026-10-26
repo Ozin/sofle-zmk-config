@@ -12,12 +12,14 @@
  * on your keycaps (y/z in the right spots, @ # { } [ ] etc.). The DE_*
  * keycodes come from the vendored keys_de.h header.
  *
- * Umlauts: HOLD a GUI (Win) thumb key, then a/o/u/s -> ä/ö/ü/ß (Shift -> capitals).
+ * Umlauts: HOLD a GUI (Win) thumb key, then a/o/u/s -> ä/ö/ü/ß (Shift -> capitals),
+ *   e -> €.
  *   While the GUI key is held the board is on the GUI layer, where every other
- *   key is its real Win+key shortcut (Win+L, Win+E, Win+D, Win+1..0, ...).
+ *   key is its real Win+key shortcut (Win+L, Win+R, Win+D, Win+1..0, ...).
  *   A quick TAP of a GUI key alone = Start menu. Because the umlauts live on a
  *   layer, Windows never sees a lone Win press, so the Start menu no longer pops
- *   up while typing umlauts. (Trade-off: Win+A / Win+S / Win+Shift+S are gone.)
+ *   up while typing umlauts. (Trade-off: Win+A / Win+E / Win+S / Win+Shift+S
+ *   are gone.)
  *
  * Numpad: toggle layer. Raise + top-right key turns it ON (stays on); the same
  *   top-right key turns it OFF. While on, the right hand is a numpad; the left
@@ -258,11 +260,12 @@
 
     gui_layer {
       display-name = "gui";
-      // Active while a GUI thumb is held. a/o/u/s -> umlauts; everything else is
-      // the real Win+key shortcut. Win+A / Win+S / Win+Shift+S are sacrificed.
+      // Active while a GUI thumb is held. a/o/u/s -> umlauts, e -> €; everything
+      // else is the real Win+key shortcut. Win+A / Win+E / Win+S / Win+Shift+S
+      // are sacrificed.
       bindings = <
         &trans      &kp LG(N1)      &kp LG(N2) &kp LG(N3) &kp LG(N4) &kp LG(N5)                      &kp LG(N6) &kp LG(N7)       &kp LG(N8) &kp LG(N9)       &kp LG(N0) &trans
-        &trans      &kp LG(Q)       &kp LG(W)  &kp LG(E)  &kp LG(R)  &kp LG(T)                       &kp LG(Y)  &kp DE_U_UMLAUT  &kp LG(I)  &kp DE_O_UMLAUT  &kp LG(P)  &trans
+        &trans      &kp LG(Q)       &kp LG(W)  &kp DE_EURO &kp LG(R) &kp LG(T)                      &kp LG(Y)  &kp DE_U_UMLAUT  &kp LG(I)  &kp DE_O_UMLAUT  &kp LG(P)  &trans
         &kp LG(TAB) &kp DE_A_UMLAUT &ss_case   &kp LG(D)  &kp LG(F)  &kp LG(G)                       &kp LG(H)  &kp LG(J)        &kp LG(K)  &kp LG(L)        &trans     &trans
         &kp LSHFT   &kp LG(Z)       &kp LG(X)  &kp LG(C)  &kp LG(V)  &kp LG(B)  &trans     &trans     &kp LG(N)  &kp LG(M)        &trans     &trans           &trans     &kp RSHFT
         &trans &kp LALT &kp LCTRL &trans &trans  &trans &trans &kp RCTRL &kp RALT &trans

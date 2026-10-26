@@ -207,7 +207,7 @@ layers:
   - - {t: ▽, type: trans}
     - Gui+Q
     - Gui+W
-    - Gui+E
+    - (RA(ZMK HID USAGE(HID USAGE KEY, HID USAGE KEY KEYBOARD E)))
     - Gui+R
     - Gui+T
     - Gui+Y

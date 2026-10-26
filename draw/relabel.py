@@ -44,6 +44,7 @@ TABLE = {
     ("", "APOSTROPHE AND QUOTE"): "ä",
     ("", "SEMICOLON AND COLON"): "ö",
     ("", "LEFT BRACKET AND LEFT BRACE"): "ü",
+    ("RA", "E"): "€",
 }
 
 TOKEN_RE = re.compile(r"KEYBOARD ([A-Z0-9 ]+?)\)")

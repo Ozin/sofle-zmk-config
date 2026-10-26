@@ -207,7 +207,7 @@ layers:
   - - {t: ▽, type: trans}
     - Gui+Q
     - Gui+W
-    - Gui+E
+    - €
     - Gui+R
     - Gui+T
     - Gui+Y
